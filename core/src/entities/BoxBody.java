@@ -25,12 +25,12 @@ public class BoxBody {
         this.id = id;
         this.nWidth = nWidth;
         createBoxBody(world, x , y);
-        body.setLinearDamping(10f);
+        body.setLinearDamping(20f);
     }
     
     private void createBoxBody(World world, float x, float y){
         BodyDef bdef = new BodyDef();
-        bdef.fixedRotation = false;
+        bdef.fixedRotation = true;
         bdef.type = BodyDef.BodyType.DynamicBody;
         bdef.position.set(x/Constants.PPM, y/Constants.PPM);
         
@@ -39,8 +39,8 @@ public class BoxBody {
         
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
-        fdef.density = 10f;
-        fdef.friction = 10f;
+        fdef.density = 1f;
+        fdef.friction = 4f;
         
         this.body = world.createBody(bdef);
         this.body.createFixture(fdef).setUserData(this);
